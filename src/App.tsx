@@ -1,8 +1,8 @@
-
+import FirstComponent from "./components/FirstComponent"
 const App = () => {
   return (
     <div>
-      <h1>App</h1>
+     <FirstComponent/>
     </div>
   )
 }
