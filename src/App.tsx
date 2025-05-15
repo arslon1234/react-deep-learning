@@ -1,10 +1,11 @@
-import FirstComponent from "./components/FirstComponent"
-import UserAuth from "./components/user-auth"
+// import FirstComponent from "./components/FirstComponent"
+// import UserAuth from "./components/user-auth"
 const App = () => {
   return (
     <div>
-     <FirstComponent/>
-     <UserAuth/>
+     {/* <FirstComponent/>
+     <UserAuth/> */}
+     <h1>Test</h1>
     </div>
   )
 }
