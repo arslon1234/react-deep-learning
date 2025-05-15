@@ -6,7 +6,7 @@ const FirstComponent = () => {
   }
   return (
     <div>
-      <h1>FirstComponent</h1>
+      <h1>FirstComponent-1</h1>
       <button onClick={handleFormat}>format</button>
     </div>
   )
