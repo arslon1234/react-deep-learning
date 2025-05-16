@@ -1,4 +1,4 @@
-name: CI/CD for Vite React App
+name: CI for Vite React App
 on:
   push:
     branches:
@@ -6,51 +6,19 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
+      - name: Setup Node.js  
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Tests
-        run: npm run test
-        continue-on-error: true
-
-      - name: Build Project
+          node-version: 21
+      - name: Install dependencies
+        run: npm install
+      - name: Build project
         run: npm run build
-
-      - name: Check Build Output
-        run: ls -la dist || echo "Dist folder not found"
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.3
-        with:
-          name: build
-          path: dist
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - name: Run tests
+        run: npm run test
